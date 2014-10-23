@@ -10,10 +10,11 @@ int maxPulse = 2400;
 int serialIn[3];    
 int startbyte;       
 int servo;         
-int pos;
+int angle;
 
 void setup() 
 { 
+  //servos on pins 8, 9, 10
   bottom.attach(10, minPulse, maxPulse);
   middle.attach(9, minPulse, maxPulse);
   claw.attach(8, minPulse, maxPulse);
@@ -23,7 +24,7 @@ void setup()
 
 void loop() 
 { 
-  //receive data from python script
+  /* receive data from python script */
   if (Serial.available() > 2) { 
         //script sends 3 bytes, so check if 3 bytes are available
     byte b = Serial.read();
